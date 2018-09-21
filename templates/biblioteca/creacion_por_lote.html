@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Importar datos en Hemerotéca</h1>
+
+<p>El archivo a subir debe tener formato Excel, con las siguientes columnas:</p>
+    <ul>
+        <li>Año</li>
+        <li>Mes</li>
+        <li>Nro</li>
+        <li>Título</li>
+        <li>Pág</li>
+        <li>Autores</li>
+        <li>Resumen</li>
+    </ul>
+
+    Los datos deben estar completos para todos los campos.
+
+    <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <input type="file" name="file"/>
+          <br />
+          <input type="submit" value="Upload File" />
+    </form>
+
+    <p><a href="{% url 'index' %}">Volver al Inicio</a></p>
+{% endblock %}

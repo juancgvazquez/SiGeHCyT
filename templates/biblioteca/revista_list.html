@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Listado de Revistas</h1>
+
+    {% if revista_list %}
+        <ul>
+
+            {% for revista in revista_list %}
+            <li>
+                <a href="{{ revista.get_absolute_url }}">{{ revista }}</a>
+            </li>
+
+            {% endfor %}
+        </ul>
+
+    {% else %}
+
+        <p>No hay revistas en la hemeroteca.</p>
+    {% endif %}
+
+
+{% endblock %}

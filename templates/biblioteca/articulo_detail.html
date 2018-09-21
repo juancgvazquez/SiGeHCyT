@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Título: {{ articulo.titulo }}</h1>
+
+    <p><strong>Autores:</strong>
+        {% for autor in articulo.autores.all %}
+            <a href="{{ autor.get_absolute_url }}"> {{ autor.apellido }}</a>,
+        {% endfor %}</p>
+    <p><strong>Resumen:</strong> {{ articulo.resumen }}
+    <p><strong>Revista:</strong> <a href="">{{ articulo.revista }}</a></p>
+{% endblock %}

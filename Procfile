@@ -1,0 +1,1 @@
+web: gunicorn SiGeBCyT.wsgi --log-file

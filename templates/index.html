@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Página Principal</h1>
+    <p>Bienvenido a la <em>Hemerotéca</em> de la Secretaría de Promoción
+        de Investigaciones y Desarrollo en Ciencia y Tecnología</p>
+    <h2>Información sobre nuestro catálogo</h2>
+    <p>La hemerotéca cuenta con {{ num_articulos }} <strong>artículos</strong>, organizados en
+        {{ num_revistas }} <strong>revistas</strong> y escritos por {{ num_autores }} <strong>autores</strong>.
+    </p>
+{% endblock %}

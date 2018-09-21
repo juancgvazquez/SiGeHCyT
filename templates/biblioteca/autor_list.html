@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Listado de Autores</h1>
+
+    {% if autor_list %}
+        <ul>
+
+            {% for autor in autor_list %}
+            <li>
+                <a href="{{ autor.get_absolute_url }}">{{ autor }}</a>
+            </li>
+
+            {% endfor %}
+        </ul>
+
+    {% else %}
+
+        <p>No hay autores en la hemeroteca.</p>
+    {% endif %}
+
+
+{% endblock %}

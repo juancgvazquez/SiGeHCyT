@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Listado de Artículos</h1>
+
+    {% if articulo_list %}
+        <ul>
+
+            {% for articulo in articulo_list %}
+            <li>
+                <a href="{{ articulo.get_absolute_url }}">{{ articulo.titulo }}</a> ({{ articulo.mostrar_autores }})
+            </li>
+
+            {% endfor %}
+        </ul>
+
+    {% else %}
+
+        <p>No hay artículos en la hemeroteca.</p>
+    {% endif %}
+
+
+{% endblock %}
