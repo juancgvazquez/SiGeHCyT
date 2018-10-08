@@ -13,4 +13,4 @@ urlpatterns = [
 	url(r'^revistas/$', views.ListaRevistas.as_view(), name='Revistas'),
 	url(r'^revistas/(?P<pk>\d+)$', views.DetalleRevista.as_view(), name='DetalleRevistas'),
 	url(r'^creacionporlote/$', views.upload_file, name='CreacionPorLote'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
