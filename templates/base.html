@@ -17,12 +17,18 @@
         <div class="row">
             <div class="col-sm-2">
                 {% block sidebar %}
-                <ul class="sidebar-nav">
-                    <li><a href="{% url 'index' %}">Inicio</a></li>
-                    <li><a href="{% url 'Artículos' %}">Artículos</a></li>
-                    <li><a href="{% url 'Autores' %}">Autores</a></li>
-                    <li><a href="{% url 'Revistas' %}">Revistas</a></li>
-                </ul>
+                    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                        <ul class="nav sidebar-nav">
+                            <li class="sidebar-brand">
+                                <a href="#">Secretaría de Promoción de Ciencia y Tecnología</a>
+                            </li>
+                        <li><a href="{% url 'index' %}">Inicio</a></li>
+                        <li><a href="{% url 'Artículos' %}">Artículos</a></li>
+                        <li><a href="{% url 'Autores' %}">Autores</a></li>
+                        <li><a href="{% url 'Revistas' %}">Revistas</a></li>
+
+                        </ul>
+                    </nav>ś
                 {% endblock %}
             </div>
             <div class="col-sm-10">
