@@ -1,1 +1,1 @@
-web: gunicorn SiGeBCyT.wsgi --log-file
+web: gunicorn SiGeHCyT.wsgi --log-file
