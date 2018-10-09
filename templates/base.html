@@ -13,47 +13,56 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-2">
-                {% block sidebar %}
-                    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-                        <ul class="nav sidebar-nav">
-                            <li class="sidebar-brand">
-                                <a href="#">Secretaría de Promoción de Ciencia y Tecnología</a>
-                            </li>
-                        <li><a href="{% url 'index' %}">Inicio</a></li>
-                        <li><a href="{% url 'Artículos' %}">Artículos</a></li>
-                        <li><a href="{% url 'Autores' %}">Autores</a></li>
-                        <li><a href="{% url 'Revistas' %}">Revistas</a></li>
+    <div id="wrapper">
+        <div class="overlay"></div>
+            {% block sidebar %}
+                <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                    <ul class="nav sidebar-nav">
+                        <li class="sidebar-brand">
+                            <a href="#">Secretaría de Promoción de Ciencia y Tecnología</a>
+                        </li>
+                    <li><a href="{% url 'index' %}">Inicio</a></li>
+                    <li><a href="{% url 'Artículos' %}">Artículos</a></li>
+                    <li><a href="{% url 'Autores' %}">Autores</a></li>
+                    <li><a href="{% url 'Revistas' %}">Revistas</a></li>
 
-                        </ul>
-                    </nav>ś
-                {% endblock %}
-            </div>
-            <div class="col-sm-10">
-            {% block content %}{% endblock %}
-            {% block pagination %}
-                {% if is_paginated %}
-                    <div class="pagination">
-                        <span class="page-links">
-                            {% if page_obj.has_previous %}
-                                <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">anterior</a>
-                            {% endif %}
-                            <span class="page-current">
-                                Página {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                            </span>
-                            {% if page_obj.has_next %}
-                                <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">siguiente</a>
-                            {% endif %}
-                        </span>
-                    </div>
-
-                {% endif %}
-
+                    </ul>
+                </nav>
             {% endblock %}
+            <div id="page-content-wrapper">
+                <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle"></span>
+                    <span class="hamb-bottom"></span>
+                </button>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            {% block content %}{% endblock %}
+                            {% block pagination %}
+                                {% if is_paginated %}
+                                    <div class="pagination">
+                                        <span class="page-links">
+                                            {% if page_obj.has_previous %}
+                                                <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">anterior</a>
+                                            {% endif %}
+                                            <span class="page-current">
+                                                Página {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                                            </span>
+                                            {% if page_obj.has_next %}
+                                                <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">siguiente</a>
+                                            {% endif %}
+                                        </span>
+                                    </div>
+
+                                {% endif %}
+
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
     </div>
 </body>
+<script src="{% static 'js/base.js'%}"></script>
 </html>
