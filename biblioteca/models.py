@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-import uuid
+
 
 class Revista(models.Model):
 	'''
@@ -11,15 +11,22 @@ class Revista(models.Model):
 	("Jul", "Julio"), ("Ago", "Agosto"), ("Sep", "Septiembre"), ("Oct", "Octubre"), ("Nov", "Noviembre"),
 	("Dic", "Diciembre")
 	)
+	titulo = models.CharField(max_length=100, verbose_name='Título', help_text='Ingresar el título Revista')
 	mes = models.CharField(choices=MESES, max_length=3, verbose_name='Mes', help_text='Ingresar mes de la Revista')
-	anio = models.IntegerField()
+	anio = models.IntegerField(verbose_name='Año')
 
 
 	def __str__(self):
-		return ','.join([self.mes,str(self.anio)])
+		mes_anio = ', '.join([self.mes,str(self.anio)])
+		return ' - '.join([self.titulo, mes_anio])
 
 	def get_absolute_url(self):
 		return reverse('DetalleRevistas', args=[str(self.id)])
+
+	@property
+	def sorted_articulos_set(self):
+		return self.articulo_set.order_by('numero')
+
 
 class Autor(models.Model):
 	"""
@@ -71,6 +78,6 @@ class Articulo(models.Model):
 		return reverse('DetalleArtículos', args=[str(self.id)])
 
 	def mostrar_autores(self):
-		return ', '.join([autor.apellido for autor in self.autores.all()])
+		return ' - '.join([autor.apellido for autor in self.autores.all()])
 
 	mostrar_autores.short_description = 'Autores'

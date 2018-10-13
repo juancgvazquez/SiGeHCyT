@@ -1,12 +1,26 @@
-body {
+/*-------------------------------*/
+/*           Header            */
+/*-------------------------------*/
+.page-header{
     position: relative;
-    overflow-x: hidden;
+    background-color: #35acdf;
+    margin: 0;
+    padding: 0
 }
-body,
-html { height: 100%;}
-.nav .open > a,
-.nav .open > a:hover,
-.nav .open > a:focus {background-color: transparent;}
+.logo{
+    float: right;
+    width: 350px;
+}
+.page-header a, .page-header a:visited, .page-header a:active .page-header {;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 10px;
+    display: inline-block;
+    padding-left: 350px;
+    line-height:1.2;
+}
 
 /*-------------------------------*/
 /*           Wrappers            */
@@ -149,9 +163,11 @@ html { height: 100%;}
 }
 
 .sidebar-nav > .sidebar-brand {
-    height: 65px;
-    font-size: 20px;
-    line-height: 44px;
+    height: 20px;
+    vertical-align: center;
+    display: block;
+    font-size: 18px;
+    line-height: 20px;
 }
 .sidebar-nav .dropdown-menu {
     position: relative;

@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Autor: {{autor}}</h1>
-
-
+    <h3>{{autor}}</h3>
+    <p>Articulos escritos por el autor:</p>
+    <ul>
+        {% for articulo in autor.articulo_set.all %}
+            <li><a href={{ articulo.get_absolute_url }}>{{ articulo.titulo }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}

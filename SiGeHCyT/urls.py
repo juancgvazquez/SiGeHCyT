@@ -16,11 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
-from django.conf.urls import url
+from adminplus.sites import AdminSitePlus
+
+admin.site = AdminSitePlus()
+admin.sites.site = admin.site
+admin.autodiscover()
 
 urlpatterns = [
     path('', RedirectView.as_view(url='/biblioteca/', permanent=True)),
     path('admin/', admin.site.urls),
     path('biblioteca/', include('biblioteca.urls')),
-    url(r'^accounts/', include('django.contrib.auth.urls')),
 ]

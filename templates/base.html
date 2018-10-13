@@ -2,30 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    {% block title %}<title>Title</title>{% endblock %}
+    {% block title %}<title>Hemeroteca de  CyT - Sistemas</title>{% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    {% block header %}
+    {% endblock %}
 </head>
 
 <body>
+
     <div id="wrapper">
+        <div class="page-header">
+            <p><img src="{% static 'img/logo.jpg' %}" class="logo"/>
+            <a href="/">Hemeroteca de la Secretaría de Promoción de Investigaciones<br/> y
+                Desarrollo en Ciencia y Tecnología</a>
+            </p>
+        </div>
         <div class="overlay"></div>
             {% block sidebar %}
                 <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
                     <ul class="nav sidebar-nav">
                         <li class="sidebar-brand">
-                            <a href="#">Secretaría de Promoción de Ciencia y Tecnología</a>
+                            <a href="/">SePIDCyT</a>
                         </li>
-                    <li><a href="{% url 'index' %}">Inicio</a></li>
-                    <li><a href="{% url 'Artículos' %}">Artículos</a></li>
-                    <li><a href="{% url 'Autores' %}">Autores</a></li>
-                    <li><a href="{% url 'Revistas' %}">Revistas</a></li>
-
+                        <li/>
+                        <li><a href="{% url 'index' %}">Inicio</a></li>
+                        <li><a href="{% url 'Artículos' %}">Artículos</a></li>
+                        <li><a href="{% url 'Autores' %}">Autores</a></li>
+                        <li><a href="{% url 'Revistas' %}">Revistas</a></li>
+                        <li><a href="{% url 'Búsqueda' %}">Buscar</a></li>
                     </ul>
                 </nav>
             {% endblock %}

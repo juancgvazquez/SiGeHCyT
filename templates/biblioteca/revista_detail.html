@@ -1,7 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Revista de: {{ revista.mes}}, {{revista.anio}}</h1>
+    <h3>{{ revista.titulo }}</h3>
+    <h3>Edición: {{ revista.mes}}, {{revista.anio}}</h3>
+    <p>Artículos en la revista:</p>
+    <ul>
+    {% for articulo in revista.sorted_articulos_set %}
+        <p>{{ articulo.numero }} - <a href={{ articulo.get_absolute_url }}>{{ articulo.titulo }}</a><br />
+            Autores:
+            {% for autor in articulo.autores.all %}
+                 {% if articulo.autores.count > 1 %}
+                    {% if forloop.last %}<a href={{ autor.get_absolute_url }}>{{ autor.apellido }}
+                    {% else %}<a href={{ autor.get_absolute_url }}>{{ autor.apellido }} -
+                    {% endif %}
+                {% else %}
+                 <a href={{ autor.get_absolute_url }}>{{ autor.apellido }}
+                {% endif %}
+            {% endfor %}
+        </p>
 
-
+    {% endfor %}
+    </ul>
 {% endblock %}

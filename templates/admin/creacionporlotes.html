@@ -1,26 +1,28 @@
 {% extends 'adminplus/base.html' %}
-
+{% load static %}
 {% block content %}
 <h1>Importar datos en Hemeroteca</h1>
 
 <p>El archivo a subir debe tener formato Excel, con las siguientes columnas:</p>
     <ul>
+        <li>Título_revista</li>
         <li>Año</li>
         <li>Mes</li>
         <li>Nro</li>
         <li>Título</li>
-        <li>Pág</li>
+        <li>Pág.</li>
         <li>Autores</li>
         <li>Resumen</li>
     </ul>
 
     Los datos deben estar completos para todos los campos.
 
+    Puede bajar un modelo de planilla para completar <a href={% static 'TemplateRevistas.xlsx' %}>aquí</a>.
     <form method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-          <input type="file" name="file"/>
-          <br />
-          <input type="submit" value="Upload File" />
+      {% csrf_token %}
+      <input type="file" class="btn btn-default" name="file"/>
+      <br />
+      <input type="submit" value="Upload File" />
     </form>
 
     <p><a href="{% url 'index' %}">Volver al Inicio</a></p>
